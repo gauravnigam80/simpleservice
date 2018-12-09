@@ -1,3 +1,4 @@
 FROM java:8
 COPY target/*.war SimpleService.jar
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "SimpleService.jar"]
