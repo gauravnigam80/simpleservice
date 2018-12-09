@@ -1,0 +1,3 @@
+FROM java:8
+COPY target/*.war SimpleService.jar
+ENTRYPOINT ["java", "-jar", "SimpleService.jar"]
