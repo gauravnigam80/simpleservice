@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.service.model.rest.Account;
@@ -28,31 +27,31 @@ public class AccountRestServiceController {
 	AccountService accountService;
 	
 	@RequestMapping(value = "/rest/account/json",method=RequestMethod.GET)
-    public @ResponseBody List<Account> getAllAccounts() {
+    public List<Account> getAllAccounts() {
 		return accountService.getAllAccounts();
 	}
 
 	@RequestMapping(value = "/rest/account/json/{id}",method=RequestMethod.GET)
-    public @ResponseBody Account getAccount(@PathVariable("id") long id) {
+    public Account getAccount(@PathVariable("id") long id) {
 		return accountService.getAccount(id);
 	}
 	
 	@RequestMapping(value = "/rest/account/json",method=RequestMethod.POST)
-    public @ResponseBody Message createAccount(@RequestBody Account account) {
+    public Message createAccount(@RequestBody Account account) {
 		//TODO boolean check
 		accountService.createAccount(account);
 		return new Message("Account has been successfully added");
 	}
 	
 	@RequestMapping(value="/rest/account/json/{id}",method=RequestMethod.DELETE)
-    public @ResponseBody Message deleteAccount(@PathVariable("id") long id) {
+    public Message deleteAccount(@PathVariable("id") long id) {
 		//TODO boolean check2
 		accountService.deleteAccount(id);
 		return new Message("account sucessfully deleted");
 	}
 
 	 @RequestMapping(value="/rest",method=RequestMethod.GET)
-	    public @ResponseBody Message getAccount() {
+	    public Message getAccount() {
 	        return new Message("HELLO WORLD");
 	  }
 }
